@@ -1,0 +1,26 @@
+import "pkl:yaml"
+
+common_rel = new yaml.Parser {}.parse(read("common.yaml"))
+env_rel = new yaml.Parser {}.parse(read("env.yaml"))
+
+function getPropValue(name:String, prop:String): Any = if (env_rel.getProperty(name).hasProperty(prop)) env_rel.getProperty(name).getProperty(prop) else common_rel.getProperty(name).getProperty(prop)
+
+apps {
+  for (_name, _v in env_rel) {
+    [_name] {
+      chart0 = if (_v.hasProperty("chart")) _v.chart else common_rel.getProperty(_name).chart
+      chart2 = _v.toMap().getOrNull("chart") ?? common_rel.toMap()[_name].chart
+      chart = getPropValue(_name, "chart")
+      version = getPropValue(_name, "version")
+    namespece = _v.namespace 
+    enabled = _v.enabled
+    priority = _v.priority
+    value = _v
+    }
+  }
+}
+
+hidden h: Mixin<Dynamic> = new { ... p2 } 
+
+//merged = p1.toMap() + p2.toMap()
+//m = p1 + p2

@@ -1,0 +1,20 @@
+import "a.pkl"
+import "b.pkl"
+
+common {
+    name = "common"
+}
+
+release = a.apps.toMap() + b.apps.toMap()
+release2 { ...a.apps } { ...b.apps }  // same as the above, not deep merge
+
+release_apps { ...a.apps }
+
+
+output {
+    //value = outer
+    //files {
+    //    ["apps"] { value = a.apps }
+    //    ["comm"] { value = common }
+    //}
+}

@@ -1,0 +1,7 @@
+apps:
+  argo:
+    namespece: argocd
+    enabled: true
+    priority: 1
+namespaces:
+  default: false

@@ -1,0 +1,12 @@
+docker-registry:
+  enabled: false
+ingress-nginx: 
+  enabled: true
+o11y:
+  enabled: true 
+  prometheus:
+    enabled: true
+  loki:
+    enabled: true
+  promtail:
+    enabled: false

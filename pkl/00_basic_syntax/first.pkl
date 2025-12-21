@@ -1,0 +1,22 @@
+name = "tom"
+stu = true
+age = if (name == "tom" && stu) 18 else 0
+
+file = "abc.pkl".dropLast(4)
+
+str_pos = "local/nginx.pkl".indexOf("/")
+str_pos2 = "local/nginx.pkl".lastIndexOf(".")
+str = "local/nginx.pkl".substring(str_pos+1,str_pos2)
+
+env="local"
+comp = List("c","b")
+aMap = Map("local/a.pkl", "aa", "dev/b.pkl", "bb")
+mapFiler = aMap.filter((k,_) -> let(c=k.substring(k.indexOf("/")+1,k.lastIndexOf("."))) k.startsWith(env) && comp.contains(c) )
+
+s = "local/ii.pkl".split(Regex(#"[/.]"#))[2]
+
+function getModelName(uri) = let (l=uri.split(Regex(#"[/.]"#))) l[l.length-1]
+
+ss = getModelName("locc/sss.kkf")
+
+

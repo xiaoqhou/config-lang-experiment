@@ -1,0 +1,13 @@
+
+base {
+  name = "base obj"
+  ns = "base"
+}
+
+
+obj1 = (base) {
+  name = "obj1"
+  extend1 = "extend prop"
+}
+
+

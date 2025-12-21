@@ -1,0 +1,7 @@
+ingress-nginx:
+  chart: ingress-nginx/ingress-nginx
+  version: 4.10.5
+  priority: 0
+argocd:
+  chart: argo/argo
+  version: 0.8.5

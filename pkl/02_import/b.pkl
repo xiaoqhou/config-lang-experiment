@@ -1,0 +1,6 @@
+apps {
+   ["ingres-nginx"] {
+    chart = "nginx"
+    version = "2.0.0"
+   }
+}

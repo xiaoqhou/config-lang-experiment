@@ -1,0 +1,7 @@
+import "pkl:yaml"
+
+fileContent = read("list.txt")
+
+y = new yaml.Parser {}.parse(read("ignore.yaml")) 
+
+list = import("list.pkl").ignored.toList()

@@ -1,0 +1,8 @@
+nginx: 
+  enabled: false
+o11y:
+  enabled: false 
+  prometheus:
+    enabled: false
+  loki:
+    enabled: false 

@@ -1,0 +1,22 @@
+import_multifile {
+ //argocd = import("argocd.pkl").releases["argocd"]
+ for (_key, _val in rel) {
+    [_key] { ...import("argocd.pkl").releases[_key] }
+  } 
+} 
+
+Notes
+- you can't use variable in import(...)
+
+
+//apps { ...ingressNginx.releases } {...argocd.releases}
+
+local releases = import*("*.pkl").toMap().remove("main.pkl")
+
+apps {
+  for (_key, _val in releases)  {
+    //let (name = _key.dropLast(4)) // bug, doesn't work
+    [_key.dropLast(4)] {..._val.releases[_key.dropLast(4)]} 
+    { enabled = release_enabled[_key.dropLast(4)] ?? false } 
+  }
+}

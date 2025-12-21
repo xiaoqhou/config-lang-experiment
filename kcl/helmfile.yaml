@@ -1,0 +1,13 @@
+releases:
+- name: prometheus
+  namespace: prometheus
+  chart: prometheus-community/prometheus
+  set:
+  - name: rbac.create
+    value: false
+- name: nginx 
+  namespace: nginx
+- name: loki
+  namespace: o11y
+- name: grafana
+  namespace: o11y

@@ -1,0 +1,23 @@
+# list available commands
+default:
+  @just --list
+
+# diff k0s components
+diff:
+  #!/bin/sh
+  for d in `\ls -d k0s/components/*/`
+  do
+    cd $d
+    component=`basename $PWD`
+    echo ">>> diff component ${component}..."
+    [ -f helmfile.yaml ] && kcl ../components.k -D component=${component} | sed 's/#{{{{/{{{{/g' | helmfile diff -f -
+    cd - >/dev/null
+  done
+
+# sync k0s components
+sync component:
+  #!/bin/sh
+  echo ">>> sync {{component}}..."
+  cd k0s/components/{{component}}
+  kcl ../components.k -D component={{component}} | sed 's/\\{{{{/{{{{/g' | helmfile apply -f -
+

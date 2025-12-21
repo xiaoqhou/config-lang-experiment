@@ -1,0 +1,4 @@
+apps:
+  argo:
+    enabled: true
+    priority: 2

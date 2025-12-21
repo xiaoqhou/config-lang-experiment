@@ -1,0 +1,45 @@
+mods = import*("{a,b}.pkl")
+
+modules {
+  for(_key,_val in mods) {
+    [_key] {  ..._val.apps }
+  }
+}
+
+modules0 {
+  for(_key,_val in mods) {
+     ..._val.apps 
+  }
+}
+
+
+modules2 {
+  for(_key,_val in mods) {
+    [_key.dropLast(4)] { ..._val.apps }
+    // add new property
+    { newProp = "this is new, such enalbe something" }
+  }
+}
+
+modules3 {
+  for(_key,_val in mods) {
+    // doesn't work
+    //let (n = _key.dropLast(4))
+    //[n] { ..._val.apps }
+  }
+}
+
+modules4 {
+  for(_key,_val in mods) {
+    when (_key == "a.pkl")
+    { [_key.dropLast(4)] { ..._val.apps } }
+  }
+}
+
+modules5 {
+  for(_key,_val in mods) {
+    when (_key == "a.pkl")
+    { ..._val.apps } 
+  }
+}
+
