@@ -1,0 +1,30 @@
+source : Dynamic = new {
+    spring {
+        world {
+            name = "True"
+        }
+    }
+    field = 1
+}
+
+another : Dynamic = new {
+    spring {
+        test {
+            name = "True"
+        }
+    }
+}
+
+overwrite = (source) { ... another}
+
+local third: Mixin<Dynamic> = new {
+    spring {
+        test {
+            name = "True"
+        }
+    }
+}
+
+deepMerged = source |> third
+
+

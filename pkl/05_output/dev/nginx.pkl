@@ -1,0 +1,51 @@
+apps {
+  ["nginx"] {
+    chart = "nginx"
+    enabled = true
+    values {
+      repclia = 2
+    }
+  }
+  ["nginx_configmap"] {
+    chart = "raw"
+    enabled = true
+    values { o = "" }
+  }
+  ["another-app"] {
+    chart = "another"
+    values { a = ""}
+  }
+}
+
+function reconcileRelease(rels) = new Mixin {
+  for (relName,_value in apps) {
+    //when (_value.hasProperty("values") && !_value.values.toMap().isEmpty) {
+      [relName] {
+        values = "fiels/\(relName).yaml"
+      }
+
+      //["\(relName)_value"] = _value
+    //}
+  }
+}
+
+output {
+  value {
+    apps {
+      ["nginx"] { 
+        values = null
+        valueFile = "ref_files/nginx.yaml" 
+      }
+    }
+  }
+
+  files {
+    ["ref_files/nginx.yaml"] {
+      value = apps["nginx"].values
+      renderer = new YamlRenderer {}
+    }
+  }
+
+}
+
+

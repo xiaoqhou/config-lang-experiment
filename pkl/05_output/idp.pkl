@@ -1,0 +1,7 @@
+import* "**.pkl" as allMod
+
+env: "local"|"dev" 
+
+local imported = allMod["\(env)/nginx.pkl"]
+
+apps = imported.output.value.apps
