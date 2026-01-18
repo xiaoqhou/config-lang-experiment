@@ -2,5 +2,6 @@
 	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	"features": {
 		"ghcr.io/devcontainers-extra/features/kind:1": {}
-	}
+	},
+	"postCreateCommand": "curl -L -o ~/.local/bin/pkl 'https://github.com/apple/pkl/releases/download/0.30.2/pkl-linux-amd64' && chmod +x ~/.local/bin/pkl"
 }
