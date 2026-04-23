@@ -1,0 +1,66 @@
+import "pkl:reflect"
+
+hidden name: String = reflect.moduleOf(module).name
+
+namespace: String
+
+chart: String = charts.getOrNull(this.name)?.chart ?? 
+  throw("Not found chart:\(this.name) from App.charts") 
+
+version: String = charts.getOrNull(this.name)?.version ??
+  throw("Not found chart:\(this.name) from App.charts")
+
+valuesFiles: Listing<String>
+
+hidden values: Dynamic?
+
+priority: Int?
+
+hidden manifests: Dynamic?
+
+hidden rawRelease {
+  ["\(name)-manifests"] {
+    chart = "incubator/raw"
+    version = "0.2.5"
+    namespace = module.namespace
+    valuesFile = "manifests/\(name).yaml"
+  }
+}
+
+// charts registry
+hidden charts: Mapping<String,Dynamic> = new {
+  ["argo"] {
+    chart = "argo/argo"
+    version = "2.0"
+  }
+}
+
+output {
+  value {
+    when (values != null) {
+      valuesFiles {
+        "values/\(name)-custom.yaml"
+      }
+    }
+  }
+  files {
+    when (values != null) {
+      ["values/\(name)-custom.yaml"] {
+        value = values
+        renderer = new YamlRenderer {}
+      }
+    }
+    when (manifests != null) {
+      ["manifests/\(name).yaml"] {
+        value {
+          resources {
+            for(_, _value in manifests) {
+             _value
+            }
+          }
+        }
+        renderer = new YamlRenderer {}
+      }
+    }
+  }
+}

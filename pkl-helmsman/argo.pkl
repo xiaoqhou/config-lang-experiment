@@ -1,0 +1,31 @@
+//module argocd
+amends "App.pkl"
+
+//name = "argo"
+namespace = "argocd-ns" 
+//chart = "overwrite argo chart"
+
+valuesFiles {
+  "argo-common.yaml"
+}
+
+/*
+values {
+  port = "80"
+}
+
+manifests {
+  ["configmap"] {
+    apiVersion = "v1"
+    kind = "ConfigMap"
+    metadata {
+        name = "local-registry-hosting"
+        namespace = "kube-public"
+    }
+    data {
+      }
+  }
+  ["secrets"] {
+    pass = "password"
+  }
+}*/

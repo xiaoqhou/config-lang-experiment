@@ -1,0 +1,25 @@
+context = "test"
+
+metadata {
+  maintainer = "xiaoqhou(houxq.bj@outlook.com)"
+  description = "helmsman file powered by pkl"
+}
+
+namespaces {
+  dev {}
+}
+
+helmRepos {
+  incubator = "https://charts.helm.sh/incubator"
+  stable = "https://charts.helm.sh/stable"
+  argo = "https://argoproj.github.io/argo-helm"
+}
+
+local modules = import*("{argo}.pkl")
+apps {
+  for(_,m in modules) {
+    [m.name] = m.output.value
+    when(m.manifests != null) { ...m.rawRelease }
+  }
+  //["argo.pkl"] = import("argo.pkl").output.value
+}
