@@ -1,0 +1,18 @@
+{
+  "name": "mypkg2",
+  "packageUri": "package://example/mypkg2@1.1.0",
+  "version": "1.1.0",
+  "packageZipUrl": "https://example/mypkg2/mypkg2@1.1.0.zip",
+  "packageZipChecksums": {
+    "sha256": "5628e3026bad112d27791aaa52b32c8e941c3f8b945033ea0226e458118422ad"
+  },
+  "dependencies": {
+    "pkg1": {
+      "uri": "package://example/mypkg@1.0.0",
+      "checksums": {
+        "sha256": "1e2266e02aeece4ad629a70e384fbe783da534c00f68dfb00acd7b7c5eaaad81"
+      }
+    }
+  },
+  "authors": []
+}

@@ -1,0 +1,5 @@
+import "@pkg1/util.pkl"
+//import "../common/common.pkl"
+
+test = util.test
+//a = common.common

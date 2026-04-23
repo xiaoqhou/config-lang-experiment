@@ -1,0 +1,11 @@
+{
+  "name": "mypkg",
+  "packageUri": "package://example/mypkg@1.0.0",
+  "version": "1.0.0",
+  "packageZipUrl": "https://example/mypkg/mypkg@1.0.0.zip",
+  "packageZipChecksums": {
+    "sha256": "b01c6bfe563526b4e8495847f0235f79b3fca1d2bd5764159767aaece339e765"
+  },
+  "dependencies": {},
+  "authors": []
+}

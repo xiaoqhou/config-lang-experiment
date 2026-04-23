@@ -1,0 +1,3 @@
+import "@pkg2/common.pkl"
+
+a = common.test

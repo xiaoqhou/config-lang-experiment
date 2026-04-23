@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "resolvedDependencies": {
+    "package://example/mypkg2@1": {
+      "type": "local",
+      "uri": "projectpackage://example/mypkg2@1.1.0",
+      "path": "pkg2"
+    },
+    "package://example/mypkg@1": {
+      "type": "local",
+      "uri": "projectpackage://example/mypkg@1.0.0",
+      "path": "pkg1"
+    }
+  }
+}
